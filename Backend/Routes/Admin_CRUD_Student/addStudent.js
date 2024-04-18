@@ -3,7 +3,6 @@ const student = require("../../Schema/Admin_CRUD/students");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  console.log("Coming");
   const data = req.body;
   console.log(data);
   try {

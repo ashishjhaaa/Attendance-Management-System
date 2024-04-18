@@ -8,7 +8,6 @@ function App() {
         <div className="nav">
           <div className="navLogo">
             Admin Dashboard
-            <i className="fa fa-car"></i>
           </div>
         </div>
       </section>
@@ -16,32 +15,10 @@ function App() {
       <div className="nav">
         <div className="navItems" id="navItems">
           <div className="home">
-            <Link to="/add_student">Add Student</Link>
+            <Link to="/check_student">Go to Students</Link>
           </div>
           <div className="home">
-            <Link to="/read_student">All Student</Link>
-          </div>
-          <div className="home">
-            <Link to="/update_student">Update Student</Link>
-          </div>
-          <div className="home">
-            <Link to="/delete_student">Delete Student</Link>
-          </div>
-        </div>
-      </div>
-      <div className="nav">
-        <div className="navItems" id="navItems">
-          <div className="home">
-            <Link to="/add_teacher">Add Teacher</Link>
-          </div>
-          <div className="home">
-            <Link to="/read_teacher">All Teacher</Link>
-          </div>
-          <div className="home">
-            <Link to="/update_teacher">Update Teacher</Link>
-          </div>
-          <div className="home">
-            <Link to="/delete_teacher">Delete Teacher</Link>
+            <Link to="/check_teacher">Go to Teachers</Link>
           </div>
         </div>
       </div>

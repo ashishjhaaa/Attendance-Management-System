@@ -8,7 +8,6 @@ function App() {
         <div className="nav">
           <div className="navLogo">
             Student Dashboard
-            <i className="fa fa-car"></i>
           </div>
         </div>
       </section>

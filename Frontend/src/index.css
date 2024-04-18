@@ -1,120 +1,54 @@
-/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.home-container {
-  text-align: center;
-  margin-top: 100px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.home-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+body {
+  background: #e0e5ec;
+  color: #9baacf;
+  font-family: "Maven Pro", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.2rem;
+  gap: 1rem;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
-}
-
-.button {
-  background-color: #007bff;
-  color: white;
+/* .card button {
+  background: none;
   border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin: 0 10px;
-  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.button:hover {
-  background-color: #0056b3;
+.card {
+  transition-duration: 0.7s;
+  transition-timing-function: ease-out;
 }
 
-/* index.css */
-
-.signup-container {
-  text-align: center;
-  margin-top: 100px;
+.card:hover {
+  transform: rotateY(180deg) scale(1.1);
 }
 
-.signup-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.card button:hover {
+  color: red;
 }
 
-.signup-form {
-  width: 300px;
-  margin: 0 auto;
+.cart button::before {
+  content: "Buy Now";
+  position: absolute;
+  background-color: #000;
+  border-radius: 5px;
+  min-width: 80px;
+  padding: 0.3em;
+  display: none;
+  z-index: 10;
+  top: 2.3em;
 }
-
-.signup-label {
+.cart button:hover::before {
   display: block;
-  margin-bottom: 10px;
-}
-
-.signup-input {
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.signup-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.signup-button:hover {
-  background-color: #0056b3;
-}
-
-/* index.css */
-
-.login-container {
-  text-align: center;
-  margin-top: 100px;
-}
-
-.login-title {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.login-form {
-  width: 300px;
-  margin: 0 auto;
-}
-
-.login-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.login-input {
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.login-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.login-button:hover {
-  background-color: #0056b3;
-}
+} */

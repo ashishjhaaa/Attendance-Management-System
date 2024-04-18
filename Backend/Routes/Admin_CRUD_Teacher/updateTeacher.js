@@ -3,20 +3,21 @@ const teacher = require("../../Schema/Admin_CRUD/teachers");
 const router = express.Router();
 
 router.put("/:id", async (req, res) => {
-  const teacherId = req.params.id;
-  const newData = req.body;
   try {
-    const updatedTeacher = await teacher.findByIdAndUpdate(teacherId, newData, {
-      new: true,
-    });
-    if (!updatedTeacher) {
-      return res.send("teacher not found");
+    const updatedteacher = await teacher.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!updatedteacher) {
+      return res.status(404).json({ message: "teacher not found" });
     }
-    console.log("Teacher updated successfully:", updatedTeacher);
-    res.send("Teacher updated successfully");
-  } catch (error) {
-    console.error("Error updating teacher:", error);
-    res.status(500).send("Error updating teacher");
+    console.log("teacher updated successfully:", updatedteacher);
+
+    res.json(updatedteacher);
+  } catch (err) {
+    console.error("Error updating teacher:", err);
+    res.status(500).json({ message: "Server error" });
   }
 });
 module.exports = router;

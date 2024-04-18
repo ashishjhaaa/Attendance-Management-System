@@ -1,8 +1,8 @@
 function error() {
   return (
     <>
-      <h1>Some error is coming</h1>
-      <h2>Please check the code once</h2>
+      <h1>Login Failed</h1>
+      <h2>Please enter the correct username or password</h2>
     </>
   );
 }

@@ -3,18 +3,15 @@ const student = require("../../Schema/Admin_CRUD/students");
 const router = express.Router();
 
 router.delete("/:id", async (req, res) => {
-  const studentId = req.params.id;
-  console.log(studentId);
   try {
-    const deletedStudent = await student.findByIdAndDelete(studentId);
+    const deletedStudent = await student.findByIdAndDelete(req.params.id);
     if (!deletedStudent) {
-      return res.status(404).send("Student not found");
+      return res.status(404).json({ message: "Student not found" });
     }
-    console.log("Student deleted successfully:", deletedStudent);
-    res.send("Student deleted successfully");
-  } catch (error) {
-    console.error("Error deleting student:", error);
-    res.status(500).send("Error deleting student");
+    res.json({ message: "Student deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting student:", err);
+    res.status(500).json({ message: "Server error" });
   }
 });
 
