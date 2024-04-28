@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
   console.log("Coming in backend");
   try {
     const allteachers = await teacher.find();
-    console.log("All teacher data:", allteachers);
+    // console.log("All teacher data:", allteachers);
     res.status(200).send(allteachers);
   } catch (error) {
     console.error("Error fetching teacher data:", error);

@@ -28,6 +28,15 @@ function TeacherUpdate() {
     setIsAdding(false);
   };
 
+  const handleDelete = async (teacherId) => {
+    try {
+      await axios.delete(`http://localhost:5000/delete_teacher/${teacherId}`);
+      setTeachers(teachers.filter((teacher) => teacher._id !== teacherId));
+    } catch (error) {
+      console.error("Error deleting teacher:", error);
+    }
+  };
+
   return (
     <div className="container text-center">
       <h1 className="my-4">Teacher Update</h1>
@@ -40,7 +49,7 @@ function TeacherUpdate() {
       <div className="row justify-content-center align-items-start">
         {teachers.map((teacher) => (
           <div className="col-md-4 mb-3" key={teacher._id}>
-            <TeacherCard teacher={teacher} />
+            <TeacherCard teacher={teacher} onDelete={handleDelete} />
           </div>
         ))}
       </div>

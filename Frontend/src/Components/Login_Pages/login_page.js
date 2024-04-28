@@ -11,7 +11,7 @@ function Login() {
       password: event.target.password.value,
       role: event.target.role.value,
     };
-    if (data.role == "admin") {
+    if (data.role === "admin") {
       const response = await axios.post(
         "http://localhost:5000/admin_login",
         data
@@ -20,9 +20,10 @@ function Login() {
         console.log("Admin Login Successfully");
         navigate("/admin_dashboard");
       } else {
+        alert("Invalid username or password");
         navigate("/error");
       }
-    } else if (data.role == "student") {
+    } else if (data.role === "student") {
       const response = await axios.post(
         "http://localhost:5000/student_login",
         data
@@ -34,7 +35,7 @@ function Login() {
       } else {
         navigate("/error");
       }
-    } else if (data.role == "teacher") {
+    } else if (data.role === "teacher") {
       const response = await axios.post(
         "http://localhost:5000/teacher_login",
         data
@@ -66,7 +67,7 @@ function Login() {
           />
         </label>
         <br />
-        <div style={{ display: "flex" }}>
+        <div className="radio-group">
           <input type="radio" id="student" name="role" value="student" />
           <label htmlFor="student">Student</label>
 

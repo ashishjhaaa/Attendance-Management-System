@@ -40,3 +40,32 @@
   .login-button:hover {
     background-color: #0056b3;
   }
+
+  .login-container {
+    border: 1px solid lightblue; /* Changed */
+    background-color: #f0f8ff; /* Changed */
+    padding: 20px; /* New */
+    border-radius: 10px; /* New */
+  }
+  
+  /* Increase size of form and text */
+  .login-form {
+    font-size: 18px; /* Changed */
+  }
+  
+  /* Increase size of radio buttons */
+  .radio-group input[type="radio"] {
+    transform: scale(1.5); /* Changed */
+    margin-right: 10px; /* New */
+  }
+  /* login.css */
+
+/* Add space after student radio */
+.radio-group label[for="student"] {
+  margin-right: 10px; /* New */
+}
+
+/* Add space after teacher label */
+.radio-group label[for="teacher"] {
+  margin-right: 10px; /* New */
+}

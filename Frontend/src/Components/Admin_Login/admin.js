@@ -1,24 +1,33 @@
-import "./admin.css";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./admin.css";
+
 function App() {
   return (
-    <div>
-      <section className="navBar">
-        <div className="nav">
-          <div className="navLogo">
-            Admin Dashboard
-          </div>
-        </div>
+    <div className="centered container">
+      <section>
+        <h1 className="centered">Admin Dashboard</h1>
       </section>
 
-      <div className="nav">
-        <div className="navItems" id="navItems">
-          <div className="home">
-            <Link to="/check_student">Go to Students</Link>
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card text-center">
+            <div className="card-body">
+              <h5 className="card-title">Students</h5>
+              <Link to="/check_student" className="btn btn-primary">
+                Go <i className="fas fa-arrow-right"></i>
+              </Link>
+            </div>
           </div>
-          <div className="home">
-            <Link to="/check_teacher">Go to Teachers</Link>
+        </div>
+        <div className="col-md-6">
+          <div className="card text-center">
+            <div className="card-body">
+              <h5 className="card-title">Teachers</h5>
+              <Link to="/check_teacher" className="btn btn-primary">
+                Go <i className="fas fa-arrow-right"></i>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

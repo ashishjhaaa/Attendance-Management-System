@@ -20,6 +20,9 @@ const read_teacher_Route = require("./Routes/Admin_CRUD_Teacher/readTeacher");
 const update_teacher_Route = require("./Routes/Admin_CRUD_Teacher/updateTeacher");
 const delete_teacher_Route = require("./Routes/Admin_CRUD_Teacher/deleteTeacher");
 
+// Imported Mark Attendance Route
+const mark_attendance_Route = require("./Routes/Mark_Attendance/markAttendance");
+
 mongoose.connect("mongodb://localhost:27017/Attendance_Management_System");
 
 const db = mongoose.connection;
@@ -34,7 +37,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // Login route
-
 app.use("/admin_login", admin_Route);
 app.use("/student_login", student_Route);
 app.use("/teacher_login", teacher_Route);
@@ -51,6 +53,9 @@ app.use("/add_teacher", add_teacher_Route);
 app.use("/read_teacher", read_teacher_Route);
 app.use("/update_teacher", update_teacher_Route);
 app.use("/delete_teacher", delete_teacher_Route);
+
+// Mark Attendance Route
+app.use("/mark_attendance", mark_attendance_Route);
 
 app.listen(5000, () => {
   console.log("Serving on port 5000");

@@ -3,28 +3,21 @@ import axios from "axios";
 
 function TeacherCard({ teacher, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedteacher, setEditedteacher] = useState({
-    username: teacher.username,
-    email: teacher.email,
-    mobileno: teacher.mobileno
-  });
+  const [editedTeacher, setEditedTeacher] = useState({ ...teacher });
 
-  const handleEdit = async () => {
-    try {
-      console.log(teacher._id)
-      const response = await axios.get(`http://localhost:5000/read_teacher/${teacher._id}`);
-      const editedTeacherData = response.data;
-      setEditedteacher(editedTeacherData);
-      setIsEditing(true);
-    } catch (error) {
-      console.error("Error fetching teacher details for edit:", error);
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEditedTeacher({ ...editedTeacher, [name]: value });
+  };
+
+  const handleEdit = () => {
+    setIsEditing(true);
   };
 
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:5000/delete_teacher/${teacher._id}`);
-      onDelete(teacher._id); // Remove deleted teacher from UI
+      onDelete(teacher._id);
     } catch (error) {
       console.error("Error deleting teacher:", error);
     }
@@ -32,15 +25,16 @@ function TeacherCard({ teacher, onDelete }) {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
+    setEditedTeacher({ ...teacher });
   };
 
   const handleSaveEdit = async () => {
     try {
-      // Send a PUT request to update teacher details on the server
-      await axios.put(`http://localhost:5000/update_teacher/${teacher._id}`, editedteacher);
-      
-      // Update UI accordingly (e.g., display success message)
-      setIsEditing(false); // Exit edit mode
+      await axios.put(
+        `http://localhost:5000/update_teacher/${teacher._id}`,
+        editedTeacher
+      );
+      setIsEditing(false);
     } catch (error) {
       console.error("Error saving edited teacher details:", error);
     }
@@ -53,35 +47,96 @@ function TeacherCard({ teacher, onDelete }) {
           <input
             type="text"
             className="form-control"
-            value={editedteacher.username}
-            onChange={(e) => setEditedteacher({ ...editedteacher, username: e.target.value })}
+            name="username"
+            value={editedTeacher.username}
+            onChange={handleChange}
           />
         ) : (
-          teacher.username
+          <h5 className="card-title">{teacher.name}</h5>
         )}
       </div>
       <div className="card-body text-success">
         {isEditing ? (
           <div>
-            <input
-              type="text"
-              className="form-control mb-2"
-              value={editedteacher.email}
-              onChange={(e) => setEditedteacher({ ...editedteacher, email: e.target.value })}
-              readOnly={!isEditing} // Make input readonly when not in editing mode
-            />
-            <input
-              type="text"
-              className="form-control mb-2"
-              value={editedteacher.mobileno}
-              onChange={(e) => setEditedteacher({ ...editedteacher, mobileno: e.target.value })}
-              readOnly={!isEditing} // Make input readonly when not in editing mode
-            />
+            <div className="form-group">
+              <label>Name:</label>
+              <input
+                type="text"
+                className="form-control mb-2"
+                name="name"
+                value={editedTeacher.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Email:</label>
+              <input
+                type="email"
+                className="form-control mb-2"
+                name="email"
+                value={editedTeacher.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Mobile No:</label>
+              <input
+                type="number"
+                className="form-control mb-2"
+                name="mobileno"
+                value={editedTeacher.mobileno}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Address:</label>
+              <input
+                type="text"
+                className="form-control mb-2"
+                name="address"
+                value={editedTeacher.address}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Date of Birth:</label>
+              <input
+                type="date"
+                className="form-control mb-2"
+                name="dob"
+                value={editedTeacher.dob}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>UID:</label>
+              <input
+                type="text"
+                className="form-control mb-2"
+                name="uid"
+                value={editedTeacher.uid}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label>Department:</label>
+              <input
+                type="text"
+                className="form-control mb-2"
+                name="department"
+                value={editedTeacher.department}
+                onChange={handleChange}
+              />
+            </div>
           </div>
         ) : (
           <>
             <p className="card-text">Email: {teacher.email}</p>
             <p className="card-text">Mobile No: {teacher.mobileno}</p>
+            <p className="card-text">Address: {teacher.address}</p>
+            <p className="card-text">Date of Birth: {teacher.dob}</p>
+            <p className="card-text">UID: {teacher.uid}</p>
+            <p className="card-text">Department: {teacher.department}</p>
           </>
         )}
         <div className="d-flex justify-content-center">
@@ -96,10 +151,14 @@ function TeacherCard({ teacher, onDelete }) {
             </div>
           ) : (
             <>
-              <button className="btn btn-danger mr-2" onClick={handleDelete} disabled={isEditing} style={{ marginRight: "20px" }}>
+              <button
+                className="btn btn-danger mr-2"
+                onClick={handleDelete}
+                style={{ marginRight: "20px" }}
+              >
                 Delete
               </button>
-              <button className="btn btn-success" onClick={handleEdit} disabled={isEditing}>
+              <button className="btn btn-success" onClick={handleEdit}>
                 Edit
               </button>
             </>
